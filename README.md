@@ -50,7 +50,7 @@ A professional, full-stack financial dashboard designed to interface directly wi
 ### 1. Clone the Codebase
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/ShraddhaUjainkar/ZOHO-Books-API-Implementation.git
 cd zoho-financial-dashboard
 
 ```
