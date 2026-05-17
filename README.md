@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zoho Books Financial Dashboard Integration
 
-## Getting Started
+A professional, full-stack financial dashboard designed to interface directly with the Zoho Books API. The application dynamically retrieves live accounting records to generate comparative performance matrices and itemized ledger transaction drill-downs with built-in document tracking.
 
-First, run the development server:
+---
+
+## 📌 Core Features Delivered
+
+### 1. Dual-Month Profit & Loss Comparison Matrix (Page 19)
+
+- **Live Actuals Synchronization:** Queries live financial balances from Zoho Books for **April 2026** and **May 2026**.
+
+- **Static Budget Mapping:** Implements a single source of truth configuration (`budget.json`) to store manual tracking benchmarks.
+
+- **Automated Variance Engine:** Programmed formulas to automatically calculate dynamic variances ($C = A - B$ and $F = D - E$) across income and cost of goods sold (COGS) fields.
+
+- **Conditional UI Indicators:** Renders semantic visual cues to make tracking variance gains or deficits instantly scannable.
+
+### 2. Itemized Ledger Transaction Drill-Down (Page 20)
+
+- **Interactive Summary Hooks:** Implements data hyperlinks on performance figures to initiate immediate sub-ledger queries.
+
+- **Target Record Matching:** Accurately parses underlying transactional arrays to reconstruct historical activity logs. Isolates test entries including **TATA SONS** invoices (**INV001**, **INV002**) and vendor bills (**BILL001–BILL010**).
+
+- **Flat-List Data Tracking:** Maps critical accounting metadata directly to UI columns: **Date**, **Account Name**, **Transaction Details (Party Name)**, **Transaction Type**, **Transaction Number**, and **Amounts**.
+
+- **Document Attachment Handling:** Supports tracking and rendering original source PDF files uploaded during initial invoice or bill initialization.
+
+---
+
+## 🛠️ Architecture & Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript (Strict structural typing for deep API responses)
+- **Styling:** Tailwind CSS (Clean grid system and dark-themed navigation layouts)
+- **Design Pattern:** Decoupled Repository-Service-Action architecture separating downstream HTTP network states from upstream UI layout components.
+
+---
+
+## 🔒 Security & Performance Features
+
+- **Server-Side Security:** Executes all multi-datacenter API communication strictly within Node.js runtime boundaries. Sensitive parameters such as Client Credentials, Secret Keys, and Organization IDs run as environment variables to eliminate client-side exposure.
+- **Resilient Connection Handling:** Built a generic asynchronous fetch client utilizing native `AbortController` handles to safely cancel requests during connection drops and clear ghost memory tasks.
+- **Concurrent API Requests:** Uses parallel promise pooling (`Promise.all`) to execute multi-period report fetching simultaneously, cutting loading times significantly.
+
+---
+
+## ⚙️ Local Development Setup
+
+### 1. Clone the Codebase
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repository-url>
+cd zoho-financial-dashboard
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env.local` file in your root folder and add the credentials obtained from the Zoho Developer Console (India Portal):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+ZOHO_API_BASE_URL=https://www.zohoapis.in/books/v3
+ZOHO_ORG_ID=60071632126
+ZOHO_CLIENT_ID=your_client_id
+ZOHO_CLIENT_SECRET=your_client_secret
+ZOHO_REDIRECT_URI=your_auth_callback_url
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Run the Project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# Install dependencies
+npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Spin up local development server
+npm run dev
 
-## Deploy on Vercel
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) in your browser to evaluate the application.

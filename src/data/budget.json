@@ -1,0 +1,17 @@
+{
+  "sales": {
+    "label": "Sales",
+    "may": 225000,
+    "april": 115000
+  },
+  "cogs": {
+    "label": "Cost of Goods Sold",
+    "may": 50000,
+    "april": 80000
+  },
+  "net-profit": {
+    "label": "Net Profit/Loss",
+    "may": 175000,
+    "april": 35000
+  }
+}
