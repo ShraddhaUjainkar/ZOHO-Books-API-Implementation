@@ -61,7 +61,7 @@ Create a `.env.local` file in your root folder and add the credentials obtained 
 
 ```env
 ZOHO_API_BASE_URL=https://www.zohoapis.in/books/v3
-ZOHO_ORG_ID=60071632126
+ZOHO_ORG_ID=XXX
 ZOHO_CLIENT_ID=your_client_id
 ZOHO_CLIENT_SECRET=your_client_secret
 ZOHO_REDIRECT_URI=your_auth_callback_url
